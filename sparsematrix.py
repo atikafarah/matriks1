@@ -1,4 +1,4 @@
-# matriks/sparsematrix.py
+# file matriks/sparsematrix.py
 from matrix import Matrix
 
 class SparseMatrix(Matrix):
