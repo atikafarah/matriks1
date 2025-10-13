@@ -1,5 +1,5 @@
 # file matriks/sparsematrix.py
-from matrix import Matrix
+from matriks.matrix import Matrix
 
 class SparseMatrix(Matrix):
     """
