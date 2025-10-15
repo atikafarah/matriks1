@@ -1,0 +1,37 @@
+# ===== PYTHON STANDARD IGNORE =====
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.dll
+
+# ===== VIRTUAL ENVIRONMENT =====
+venv/
+.env/
+
+# ===== LOGS & CACHE =====
+*.log
+*.tmp
+*.cache/
+.cache/
+
+# ===== IDE / EDITOR FILES =====
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# ===== FLASK / WEB STUFF =====
+instance/
+*.db
+*.sqlite3
+
+# ===== BACKUP OR EXPORT FILES =====
+*.bak
+*.zip
+*.tar
+*.gz
+
+# ===== LOCAL TEST OUTPUT =====
+output/
