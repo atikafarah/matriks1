@@ -10,6 +10,8 @@ from sparsematrix import SparseMatrix
 from operations.multiplier import multiply_matrices
 from exporters.csv_exporter import export_to_csv
 from exporters.json_exporter import export_to_json
+from operations.inverse import inverse_matrix
+from operations.transpose import transpose_matrix
 
 def create_sparse_data(size):
     data = [[0] * size for _ in range(size)]
@@ -18,20 +20,6 @@ def create_sparse_data(size):
     return data
 
 if __name__ == "__main__":
-    print("\n--- Menguji Solusi dengan SparseMatrix ---")
-    sparse_data_1000 = create_sparse_data(1000)
-
-    # Perhatikan: kita instansiasi SparseMatrix
-    mat_a = SparseMatrix(sparse_data_1000)
-    mat_b = SparseMatrix(sparse_data_1000)
-
-    start_time = time.time()
-    # Perhatikan: fungsi multiply_matrices() tidak berubah sama sekali
-    product_mat = multiply_matrices(mat_a, mat_b)
-    end_time = time.time()
-
-    print(f"Waktu yang dibutuhkan untuk perkalian: {end_time - start_time:.2f} detik")
-
     matriks_a = Matrix([[1, 2], [3, 4]])
     matriks_b = Matrix([[5, 6], [7, 8]])
 
@@ -47,3 +35,10 @@ if __name__ == "__main__":
     hasil_perkalian = multiply_matrices(matriks_a, matriks_b)
     print_matrix(hasil_perkalian)
 
+    print("\nHasil Inverse:")
+    hasil_invers = inverse_matrix(matriks_a)
+    print_matrix(hasil_invers)
+
+    print("\nHasil Transpose:")
+    hasil_transpose = transpose_matrix(matriks_a)
+    print_matrix(hasil_transpose)
