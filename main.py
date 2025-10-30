@@ -12,6 +12,7 @@ from exporters.csv_exporter import export_to_csv
 from exporters.json_exporter import export_to_json
 from operations.inverse import inverse_matrix
 from operations.transpose import transpose_matrix
+from importers.csv_importer import import_from_csv
 
 def create_sparse_data(size):
     data = [[0] * size for _ in range(size)]
@@ -42,3 +43,7 @@ if __name__ == "__main__":
     print("\nHasil Transpose:")
     hasil_transpose = transpose_matrix(matriks_a)
     print_matrix(hasil_transpose)
+
+    print("\nDemo Import CSV")
+    m_csv = import_from_csv("data/mat_2x2.csv", has_header=False)
+    print_matrix(m_csv)
