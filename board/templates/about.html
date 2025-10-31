@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Data Penyewaan Sepeda</h2>
+
+{% if error %}
+  <div class="flash error">{{ error }}</div>
+{% endif %}
+
+<div class="dataset-meta">
+  <h3>Ringkasan</h3>
+  <ul>
+    <li><b>Nama:</b> {{ meta.dataset_name }}</li>
+    <li><b>Dimensi:</b> {{ meta.rows }} baris × {{ meta.cols }} kolom <span style="color:#6b7280;">{{ meta.expected_note }}</span></li>
+  </ul>
+  <p class="lead">{{ narrative }}</p>
+</div>
+
+{% if head_rows and columns %}
+  <div class="table-wrap">
+    <h3>Cuplikan 5 Baris Teratas</h3>
+    <div class="table-scroll">
+      <table class="table">
+        <thead>
+          <tr>
+            {% for c in columns %}
+              <th>{{ c }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in head_rows %}
+            <tr>
+              {% for c in columns %}
+                <td>{{ r[c] }}</td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="dataset-meta">
+    <h3>Kolom & Deskripsi</h3>
+    <ul>
+      {% for c in columns %}
+        <li><b>{{ c }}</b> — {{ col_desc.get(c, "Kolom "+c) }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% else %}
+  <p class="lead">File <code>board/data/day.csv</code> belum tersedia atau gagal dibaca.</p>
+{% endif %}
+{% endblock %}
