@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    container_name: matriks_web
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app              # mount seluruh project supaya update otomatis
+    environment:
+      - FLASK_ENV=development
+      - DAY_CSV_PATH=/app/board/data/day.csv
+    restart: unless-stopped
