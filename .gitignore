@@ -36,3 +36,21 @@ instance/
 # ===== LOCAL TEST OUTPUT =====
 output/
 .venv/
+# Python venv (jangan di-track)
+.venv/
+venv/
+env/
+myenv/
+
+# Cache/artefak
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local env files
+.env
+.flaskenv
+
+# Uploads runtime
+board/instance/uploads/
