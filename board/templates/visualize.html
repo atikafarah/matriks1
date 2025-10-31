@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Visualisasi</h2>
+
+{% if error %}
+  <div class="flash error">{{ error }}</div>
+{% endif %}
+
+{% if not columns %}
+  <p>Dataset belum terbaca. Pastikan file <code>board/data/day.csv</code> tersedia.</p>
+{% else %}
+
+  <div class="dataset-meta">
+    <h3>Regresi Linear (cnt ~ temp + atemp + hum + windspeed)</h3>
+    <p>Jalankan model regresi linear dari modul Farah, lalu tampilkan grafik <i>y true</i> vs <i>y pred</i> pada data test.</p>
+    <form method="POST" action="{{ url_for('visualize') }}">
+      <input type="hidden" name="mode" value="regression">
+      <button type="submit">Jalankan Regresi</button>
+    </form>
+
+    {% if reg_error %}
+      <div class="flash error" style="margin-top:10px;">{{ reg_error }}</div>
+    {% endif %}
+
+    {% if metrics %}
+      <ul style="margin-top:10px;">
+        <li><b>Features:</b> {{ metrics.features|join(", ") }}</li>
+        <li><b>Target:</b> {{ metrics.target }}</li>
+        <li><b>R² Train:</b> {{ metrics.r2_train }}</li>
+        <li><b>R² Test:</b> {{ metrics.r2_test }}</li>
+        <li><b>Split:</b> train {{ metrics.n_train }}, test {{ metrics.n_test }}</li>
+        <li><b>Sumber data:</b> {{ metrics.used_path }}</li>
+      </ul>
+    {% endif %}
+  </div>
+
+  <div class="chart-wrap">
+    {% if chartJSON %}
+      <h3>{{ chart_title }}</h3>
+      <div id="chart"></div>
+    {% endif %}
+  </div>
+
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{% if chartJSON %}
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    const fig = {{ chartJSON|safe }};
+    Plotly.newPlot('chart', fig.data, fig.layout, {displaylogo:false});
+  });
+</script>
+{% endif %}
+{% endblock %}

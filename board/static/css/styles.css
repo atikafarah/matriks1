@@ -1,0 +1,133 @@
+:root{
+  --white:#FFFFFF;
+  --bg-1:#FFFDD0;     /* kuning lembut */
+  --bg-2:#FFF294;     /* kuning accent */
+  --bg-3:#FFE786;     /* kuning sedikit lebih pekat */
+  --ink:#111827;      /* teks utama */
+  --muted:#6b7280;
+  --card:#ffffff;
+  --shadow:0 10px 30px rgba(17,24,39,.08);
+  --radius:18px;
+}
+
+/* Reset ringan */
+*{ box-sizing:border-box; }
+body{
+  margin:0; color:var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  /* Latar tidak dominan putih lagi: kombinasi gradien kuning */
+  background:
+    radial-gradient(1200px 600px at 10% 0%, var(--bg-1) 0%, transparent 60%),
+    radial-gradient(900px 500px at 90% 0%, var(--bg-2) 0%, transparent 55%),
+    linear-gradient(180deg, #FFFEE8 0%, #FFFFFF 40%, #FFF9C4 100%);
+}
+
+/* Navbar */
+.navbar{
+  position:sticky; top:0; z-index:10;
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
+  padding:14px 24px;
+  background:linear-gradient(180deg, #FFFEF0, #FFFFFF);
+  border-bottom:1px solid #f3f4f6;
+  backdrop-filter:saturate(1.2) blur(6px);
+}
+
+.brand{ font-weight:800; font-size:20px; letter-spacing:.3px; }
+.brand-accent{ color:#b58900; }
+
+/* Menu di tengah sebagai tombol */
+.nav-center{
+  display:flex; gap:10px; justify-content:center; align-items:center;
+}
+.nav-btn{
+  text-decoration:none; color:var(--ink);
+  background: var(--bg-1);
+  border:1px solid #f1e8b0;
+  padding:8px 14px; border-radius:999px; font-weight:600;
+  box-shadow: var(--shadow);
+  transition: transform .08s ease, filter .15s ease;
+}
+.nav-btn:hover{ transform: translateY(-1px); filter:brightness(0.98); }
+.nav-right{ justify-self:end; }
+
+/* Layout umum */
+.container{ max-width:1080px; margin:28px auto; padding:0 16px; }
+
+/* Hero khusus BikeSharing */
+.hero-bike{
+  background:
+    linear-gradient(135deg, rgba(255,242,148,.55), rgba(255,253,208,.65)),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><circle cx="20" cy="100" r="6" fill="%23ffe786"/><circle cx="100" cy="90" r="5" fill="%23fff294"/><circle cx="60" cy="20" r="7" fill="%23fffdd0"/></svg>') repeat;
+  border:1px solid #f3f4f6;
+  border-radius:26px;
+  padding:36px 28px;
+  box-shadow: var(--shadow);
+}
+.hero-bike h1{ font-size:38px; margin:0 0 10px; }
+.lead{ color:var(--muted); font-size:16px; max-width:860px; }
+.hero-actions{ display:flex; gap:12px; margin-top:18px; }
+
+.cta{
+  display:inline-block; text-decoration:none; color:var(--ink);
+  background: var(--bg-2);
+  border:1px solid #f1e8b0;
+  padding:10px 16px; border-radius:12px; font-weight:700;
+  box-shadow:var(--shadow);
+}
+.cta.ghost{
+  background:#ffffffbb; backdrop-filter: blur(2px);
+}
+
+/* Cards fitur */
+.features{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:16px; margin-top:22px;
+}
+.card{
+  background:linear-gradient(180deg,#ffffff, #FFFDF0);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:18px; border:1px solid #f3f4f6;
+}
+.card h3{ margin:0 0 8px; }
+
+/* Flash & form */
+.upload-form, .viz-form{
+  background:linear-gradient(180deg,#ffffff, #FFFDF0);
+  padding:16px; border-radius:var(--radius); box-shadow:var(--shadow); border:1px solid #f3f4f6;
+}
+button{
+  background:var(--bg-2); border:1px solid #f1e8b0; padding:10px 14px; border-radius:12px; font-weight:700;
+  cursor:pointer; box-shadow:var(--shadow);
+}
+button:hover{ filter:brightness(0.98); }
+.flash{ margin:12px 0; padding:10px 14px; border-radius:12px; }
+.flash.success{ background:#ecfdf5; border:1px solid #10b98133; }
+.flash.error{ background:#fef2f2; border:1px solid #ef444433; }
+
+/* Panel dataset & chart */
+.dataset-meta, .chart-wrap{
+  background:linear-gradient(180deg,#ffffff, #FFFDF0);
+  padding:16px; border-radius:var(--radius); box-shadow:var(--shadow); border:1px solid #f3f4f6; margin-top:16px;
+}
+
+/* Grid form */
+.grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin:12px 0; }
+label{ display:flex; flex-direction:column; gap:6px; font-size:14px; color:var(--muted); }
+select, input{ padding:10px; border:1px solid #e5e7eb; border-radius:10px; }
+
+/* Footer */
+.footer{
+  margin-top:48px; padding:18px; text-align:center; color:var(--muted);
+  border-top:1px solid #f3f4f6; background:linear-gradient(0deg, var(--bg-1), transparent);
+}
+/* ====== Tabel dataset ====== */
+.table-wrap{ background:linear-gradient(180deg,#ffffff,#FFFDF0); padding:16px; border-radius:var(--radius); box-shadow:var(--shadow); border:1px solid #f3f4f6; margin-top:16px; }
+.table-scroll{ overflow:auto; }
+.table{ width:100%; border-collapse:collapse; font-size:14px; }
+.table thead th{
+  position:sticky; top:0; background:#FFFEF0;
+  text-align:left; padding:10px; border-bottom:1px solid #eee;
+}
+.table td{ padding:10px; border-bottom:1px solid #f2f2f2; white-space:nowrap; }
+.table tr:hover td{ background:#FFF9D6; }
